@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disease Prevention - Home</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background:#f7f7f7;
+    color:#333;
+}
+header {
+    background-color:#2a9d8f;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+footer {
+    text-align:center;
+    padding:10px;
+    background-color:#2a9d8f;
+    color:white;
+    margin-top:20px;
+}
+.navbar-nav a {
+    margin:0 10px;
+}
+#trackerSummary {
+    margin-top:20px;
+    padding:15px;
+    border:1px solid #264653;
+    border-radius:5px;
+    background-color:#e9f5f4;
+}
+.icon-img {
+    width:50px;
+    height:50px;
+    object-fit:contain;
+    margin-right:10px;
+}
+.banner-small {
+    max-height:300px;
+    object-fit:cover;
+    width:100%;
+    border-radius:10px;
+}
+
+.video-iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    margin: 20px auto;
+    display: block;
+}
+@media (max-width: 768px) {
+    .video-iframe {
+        height: 250px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Disease Prevention Awareness</h1>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Health</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="disease.html">Diseases</a></li>
+        <li class="nav-item"><a class="nav-link" href="prevention.html">Prevention</a></li>
+        <li class="nav-item"><a class="nav-link" href="contactt.html">Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container mt-4">
+    <img src="medical.jpeg" 
+         class="img-fluid banner-small shadow" 
+         alt="Health Banner">
+</div>
+<div class="container">
+    <iframe 
+        class="video-iframe"
+        src="https://www.youtube.com/embed/yxonJTWhBJQ?si=krpJ8AhygEXEklsx" 
+        allowfullscreen 
+        loading="lazy">
+    </iframe>
+</div>
+<div class="container mt-5">
+    <div class="card bg-light mb-4 shadow">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-4">
+                <img src="https://images.pexels.com/photos/40568/medical-appointment-doctor-healthcare-40568.jpeg?auto=compress&cs=tinysrgb&h=300&w=400" class="img-fluid rounded-start" alt="About Diseases">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">About Diseases</h2>
+                    <p class="card-text">Diseases are conditions that negatively affect the structure or function of your body. They can be caused by viruses, bacteria, parasites, or lifestyle factors. Staying hydrated, exercising regularly, and getting enough sleep can help prevent many common diseases and keep your body healthy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-4">
+    <h2>Health Tracker</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form id="healthForm" class="card p-4 shadow">
+                <div class="mb-3">
+                    <label for="water" class="form-label">Water Intake (cups):</label>
+                    <input type="number" id="water" min="0" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="steps" class="form-label">Steps Walked:</label>
+                    <input type="number" id="steps" min="0" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="sleep" class="form-label">Sleep Hours:</label>
+                    <input type="number" id="sleep" min="0" max="24" step="0.5" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Update Tracker</button>
+            </form>
+        </div>
+
+        <div class="col-md-6">
+            <div id="trackerSummary" class="shadow">
+                <h3>Your Daily Health Summary:</h3>
+                <p id="waterSummary">Water: 0 cups</p>
+                <p id="stepsSummary">Steps: 0</p>
+                <p id="sleepSummary">Sleep: 0 hours</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>&copy; 2026 Disease Awareness</footer>
+
+<script>
+document.getElementById('healthForm').addEventListener('submit', function(event){
+    event.preventDefault();
+    const water = parseFloat(document.getElementById('water').value);
+    const steps = parseInt(document.getElementById('steps').value);
+    const sleep = parseFloat(document.getElementById('sleep').value);
+
+    document.getElementById('waterSummary').textContent = 'Water: ' + water + ' cups';
+    document.getElementById('stepsSummary').textContent = 'Steps: ' + steps;
+    document.getElementById('sleepSummary').textContent = 'Sleep: ' + sleep + ' hours';
+    alert('Health Tracker Updated!');
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
